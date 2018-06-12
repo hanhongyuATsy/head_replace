@@ -23,8 +23,8 @@ static int  read_dir(char *pathname);
 vector<string> proj_name;
 map<string, string> head_dir_map; 
 
-#define EXTEN_NAME_MAX 5
-#define HEAD_NAME_MAX 20
+#define EXTEN_NAME_MAX 8
+#define HEAD_NAME_MAX 30
 
 static int  get_exten_name(const char * pathname, char *exten_name)
 {
@@ -40,7 +40,7 @@ static int  get_exten_name(const char * pathname, char *exten_name)
     while(i < length)  
     {  
         if (i > EXTEN_NAME_MAX) {
-            printf("%s exten name overlenth\n", pathname);
+            printf(" i == %d;  exten name overlenth %s \n", i, pathname);
             return -1;
         }
 
@@ -49,6 +49,7 @@ static int  get_exten_name(const char * pathname, char *exten_name)
             strncpy(exten_name, pathname + (length - i), (i + 1));
             break;  
         }
+
         i++;  
     }  
 
@@ -69,13 +70,14 @@ static int get_head_name(const char * pathname, char * head_name)
     while(i < length)  
     {  
         if (i > HEAD_NAME_MAX) {
-            printf("%s exten name overlenth\n", pathname);
+            printf(" i == %d  exten headname overlenth %s\n",i , pathname);
             return -1;
         }
 
-        if(pathname[length - i] == '\\')  
+        if(pathname[length - i] == '/')  
         {
             strncpy(head_name, pathname + (length - i), (i + 1));
+            cout << "head_name" << head_name <<endl;
             break;  
         }
 
@@ -86,21 +88,25 @@ static int get_head_name(const char * pathname, char * head_name)
 
 }
 
-static int is_cpp_file(const char *pathname)
+static int is_cpp_file(const char *exten_name )
 {
-    char exten_name[EXTEN_NAME_MAX];
-
-    get_exten_name(pathname, exten_name);
 
    // printf("%s\n", exten_name);
     if ( (strcmp (exten_name , ".cc") == 0) || (strcmp (exten_name , ".cpp") == 0)
-            ||(strcmp (exten_name , ".h") == 0) || (strcmp (exten_name , ".hpp") == 0))  {
+             || (strcmp (exten_name , ".hpp") == 0))  {
         return 1;
     }
-
     return 0;
-
 }
+
+static int is_head_file(const char *exten_name)
+{
+    if ( strcmp (exten_name , ".h") == 0)  {
+        return 1;
+    }
+    return 0;
+}
+
 
 static int read_dir(char *pathname)
 {
@@ -141,16 +147,25 @@ int print_file_info(char *pathname)
         printf("cannot access the file %s", pathname);  
         return -1;  
     }  
-    if ((filestat.st_mode & S_IFMT) == S_IFDIR)  
+    if ((filestat.st_mode & S_IFMT) == S_IFDIR) //判断是一个路径  
     {  
         read_dir(pathname);  
     } 
-    else if ((filestat.st_mode & S_IFMT) == S_IFREG)
+    else if ((filestat.st_mode & S_IFMT) == S_IFREG) // 判断是一个文件
     {
-        //printf("%s \n", pathname);  
-        if (is_cpp_file(pathname) == 1) {
+        char exten_name[EXTEN_NAME_MAX];
+        get_exten_name(pathname, exten_name);
+
+        if (is_cpp_file(exten_name) == 1) {
             proj_name.push_back(pathname);
-        }
+        } 
+
+        if (is_head_file(exten_name) == 1) {
+            char head_name[HEAD_NAME_MAX];
+            proj_name.push_back(pathname);
+            get_head_name(pathname, head_name);
+            head_dir_map[head_name] = pathname;
+        } 
     }
 
     //printf("%s %8ld\n", pathname, filestat.st_size);  
@@ -235,7 +250,12 @@ int main(int argc, char *argv[])
     for(auto iter = proj_name.begin(); iter != proj_name.end(); ++iter) 
     {
         cout<< (*iter) <<endl;
-        //get_exten_name((*iter).c_str());
+    }
+
+    for(auto iter = head_dir_map.begin(); iter != head_dir_map.end(); ++iter) 
+    {
+        cout<< (*iter).first <<endl;
+        cout<< (*iter).second <<endl;
     }
 
     return 0;
