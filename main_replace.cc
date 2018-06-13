@@ -103,7 +103,7 @@ static int get_head_projdir_name(const char * pathname, char * head_name, char *
         {
             if (pathname[length - j - 1] == '/')   
             {
-                strncpy(projdir_name, pathname + (length - j), j + 1); // add 1 for "\0"
+                strncpy(projdir_name, pathname + (length - j + 1), j); // add 1 for "\0"
                 //cout << "projdir_name" << projdir_name <<endl;
                 break;  
             }
@@ -217,7 +217,6 @@ ifstream& open_file(ifstream &in, const string &file)
     in.clear();  // clear any existing errors
     lines_of_text.clear();
 
-
     // if the open fails, the stream will be in an invalid state
     in.open(file.c_str()); // open the file we were given
 
@@ -240,6 +239,8 @@ int read_file(const char * file_name)
     }
 
     store_file(infile);
+
+    infile.close();
     
     return 0;
 }
@@ -277,9 +278,14 @@ int replace_str(map<int, string> &head_line_map, map<int, string> &line_headdir_
     {
         string head_name ((*iter).second) ;
         auto iter_head_dir_map = head_dir_map.find(head_name);
-        //if(iter_head_dir_map )
-        
-        line_headdir_map [(*iter).first] = (*iter_head_dir_map).second; 
+        if(iter_head_dir_map == head_dir_map.end())
+        {
+            cout << head_name << "  head file not find in map" << endl;
+        }
+        else
+        {
+            line_headdir_map [(*iter).first] = (*iter_head_dir_map).second; 
+        }
 
         //cout << (*iter_head_dir_map).second << endl;
     }
@@ -287,14 +293,19 @@ int replace_str(map<int, string> &head_line_map, map<int, string> &line_headdir_
     return 0;
 }
 
-int write_file()
+int write_file(const char * file_name)
 {
-    for(auto iter = lines_of_text.begin(); iter != lines_of_text.end(); ++iter) { 
-
-        cout << (*iter)<< endl;
+    ofstream os(file_name);
+    if(!os) {
+        cout << "ofstream create fail :file name " << file_name << endl;
     }
-    //for(int i = 0; i < lines_of_text.size(); i++)
-    //    cout << lines_of_text[i] << endl;
+
+    for(auto iter = lines_of_text.begin(); iter != lines_of_text.end(); ++iter) { 
+        cout << (*iter) << endl;
+        os << (*iter) << endl;
+    }
+
+    os.close();
 
     return 0;
 }
@@ -302,24 +313,87 @@ int write_file()
 int replace_file(map<int, string> &line_headdir_map)
 {
 
-    if (line_headdir_map.empty()) {
-        return 0;         
-    } else {
-        for(auto iter = line_headdir_map.begin(); iter != line_headdir_map.end(); ++iter) { 
-            //cout << (*iter).first<< endl;
-            //cout << (*iter).second << endl;
-            string temp_include("#include");
-            string temp_str(temp_include + ' ' + '\"' + (*iter).second + '\"'); 
-            cout << temp_str << endl;
-            lines_of_text[(*iter).first] = temp_str;
-        }
-
-        write_file();
+    for(auto iter = line_headdir_map.begin(); iter != line_headdir_map.end(); ++iter) { 
+        //cout << (*iter).first<< endl;
+        //cout << (*iter).second << endl;
+        string temp_include("#include");
+        string temp_str(temp_include + ' ' + '\"' + (*iter).second + '\"'); 
+        //cout << temp_str << endl;
+        lines_of_text[(*iter).first] = temp_str;
     }
+
     return 0;
 }
 
 #endif
+
+static inline void print_map_value( map<int,string> &map)
+{
+    for(auto iter_head = map.begin(); iter_head != map.end(); ++iter_head) 
+    {
+        cout<< (*iter_head).first <<endl;
+        cout<< (*iter_head).second <<endl;
+    }
+}
+
+#if 1
+int main(int argc, char *argv[])
+{
+    std::cout << "main "<< endl;
+
+	if (argc != 2) {
+		printf("usage: ls directory_name");
+        return 0;
+    }
+
+    read_dir(argv[1]);
+    
+
+    map<int,string> head_line_map;
+    map<int,string> line_headdir_map;
+
+    for(auto iter = proj_name.begin(); iter != proj_name.end(); ++iter) 
+    {
+        
+        read_file((*iter).c_str());
+        get_include_line(head_line_map);
+
+        replace_str(head_line_map, line_headdir_map);
+        //print_map_value(line_headdir_map);
+
+        if (line_headdir_map.empty()) {
+            continue;         
+        } else {
+            replace_file(line_headdir_map);
+            write_file((*iter).c_str());
+        }
+
+        //cout<< (*iter) <<endl;
+    }
+/*
+    for(auto iter = head_dir_map.begin(); iter != head_dir_map.end(); ++iter) 
+    {
+        cout<< (*iter).first <<endl;
+        cout<< (*iter).second <<endl;
+    }
+    */
+
+    return 0;
+}
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
 
 #if 0
 int main(int argc, char *argv[])
@@ -351,58 +425,3 @@ int main(int argc, char *argv[])
     return 0;
 }
 #endif
-
-#if 1
-int main(int argc, char *argv[])
-{
-    std::cout << "main "<< endl;
-
-	if (argc != 2) {
-		printf("usage: ls directory_name");
-        return 0;
-    }
-
-    read_dir(argv[1]);
-    
-
-    map<int,string> head_line_map;
-    map<int, string> line_headdir_map;
-
-    for(auto iter = proj_name.begin(); iter != proj_name.end(); ++iter) 
-    {
-        
-        read_file((*iter).c_str());
-        get_include_line(head_line_map);
-
-        replace_str(head_line_map, line_headdir_map);
-        replace_file(line_headdir_map);
-
-        //for(auto iter_head = line_headdir_map.begin(); iter_head != line_headdir_map.end(); ++iter_head) 
-        //{
-        //    cout<< (*iter_head).first <<endl;
-        //    cout<< (*iter_head).second <<endl;
-
-        //}
-
-        //for(auto iter_head = head_line_map.begin(); iter_head != head_line_map.end(); ++iter_head) 
-        //{
-        //    //cout<< (*iter_head).first <<endl;
-        //    //cout<< (*iter_head).second <<endl;
-        //}
-
-        //cout<< (*iter) <<endl;
-    }
-/*
-    for(auto iter = head_dir_map.begin(); iter != head_dir_map.end(); ++iter) 
-    {
-        cout<< (*iter).first <<endl;
-        cout<< (*iter).second <<endl;
-    }
-    */
-
-    return 0;
-}
-
-#endif
-
-
