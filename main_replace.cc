@@ -14,6 +14,8 @@
 #include <sys/stat.h>  
 #include <unistd.h>  
 
+#include <fstream>
+
 using namespace std;  
 
 int  print_file_info(char *pathname);  
@@ -21,6 +23,7 @@ static int  read_dir(char *pathname);
 #define MAX_PATH 512  
 
 vector<string> proj_name;
+//multimap<string, string> head_dir_map; 
 map<string, string> head_dir_map; 
 
 #define EXTEN_NAME_MAX 8
@@ -228,25 +231,78 @@ int replace_head_str(void)
     std::cout << "###find_head_dir####" <<std::endl;
 }
 
-#if 0
+#if 1
 
-int read_file(int fd, vector<string> &file_vec)
+vector<std::string> lines_of_text;
+
+ifstream& open_file(ifstream &in, const string &file)
 {
+    in.close();  // close in case it was already open
+    in.clear();  // clear any existing errors
+
+    // if the open fails, the stream will be in an invalid state
+    in.open(file.c_str()); // open the file we were given
+
+    return in; // condition state is good if open succeeded
+}
+
+void store_file(ifstream &is)
+{
+    string textline;
+    while (getline(is, textline))
+       lines_of_text.push_back(textline);
+}
+
+int read_file(const char * file_name)
+{
+    ifstream infile;
+    if (!open_file(infile, file_name)) {
+        cerr << "No input file!" << endl;
+        return EXIT_FAILURE;
+    }
+
+    store_file(infile);
+    
     return 0;
 }
 
-int get_head_str(string line_str, string head_name)
-{
-    return 0;
-}
 
-int get_include_line(vector<string> &file_vec, map<int,string> &head_line_map)
+int get_include_line(map<int,string> &head_line_map)
 {
+
+    //for(auto iter = lines_of_text.begin(); iter != lines_of_text.end(); ++iter) 
+    for(int i = 0; i < lines_of_text.size(); i++)
+    {
+        if (lines_of_text[i].find("#include") == 0)
+        { 
+            int local_start = lines_of_text[i].find_first_of("\"");
+            //cout << local_start << endl;
+            if (local_start > 0) {
+                string temp_str1 = lines_of_text[i].substr(local_start + 1);
+                //cout << temp_str1 << endl;
+                int local_end = temp_str1.find_first_of("\"");
+                string temp_str2 = temp_str1.substr(0, local_end);
+                //cout << temp_str2 << endl;
+                cout << "line= " << i << endl;
+                head_line_map[i] = temp_str2;
+                    
+            }
+        }
+    }
+    
     return 0;
 }
 
 int replace_str(map<int, string> &head_line_map, map<string, string> &head_dir_map, map<int, string> &line_headdir_map)
 {
+    for(auto iter = head_line_map.begin(); iter != head_line_map.end(); ++iter) 
+    {
+        string head_name ((*iter).second) ;
+        auto iter_head_dir_map = head_dir_map.find(head_name);
+    
+        cout << (*iter_head_dir_map).second << endl;
+    }
+
     return 0;
 }
 
@@ -254,6 +310,7 @@ int replace_file(vector<string> &file_vec, map<int, string> &line_headdir_map)
 {
     return 0;
 }
+
 int write_file(int fd, vector<string> &file_vec)
 {
     return 0;
@@ -261,9 +318,38 @@ int write_file(int fd, vector<string> &file_vec)
 }
 #endif
 
+#if 0
+int main(int argc, char *argv[])
+{
+    map<int,string> head_line_map;
+
+	if (argc != 2) {
+		printf("usage: ls directory_name");
+        return 0;
+    }
+
+    read_file(argv[1]);
+    get_include_line(head_line_map);
 
 
+    for(auto iter = head_line_map.begin(); iter != head_line_map.end(); ++iter) 
+    {
+        cout<< (*iter).first <<endl;
+        cout<< (*iter).second <<endl;
+    }
 
+    /*
+    for(auto iter = lines_of_text.begin(); iter != lines_of_text.end(); ++iter) 
+    {
+        cout<< (*iter) <<endl;
+    }
+    */
+
+    return 0;
+}
+#endif
+
+#if 1
 int main(int argc, char *argv[])
 {
     std::cout << "main "<< endl;
@@ -276,19 +362,32 @@ int main(int argc, char *argv[])
     read_dir(argv[1]);
     
 
+    map<int,string> head_line_map;
     for(auto iter = proj_name.begin(); iter != proj_name.end(); ++iter) 
     {
-        cout<< (*iter) <<endl;
-    }
+        
+        read_file((*iter).c_str());
+        get_include_line(head_line_map);
 
+        for(auto iter_head = head_line_map.begin(); iter_head != head_line_map.end(); ++iter_head) 
+        {
+            cout<< (*iter_head).first <<endl;
+            cout<< (*iter_head).second <<endl;
+        }
+
+        //cout<< (*iter) <<endl;
+    }
+/*
     for(auto iter = head_dir_map.begin(); iter != head_dir_map.end(); ++iter) 
     {
         cout<< (*iter).first <<endl;
         cout<< (*iter).second <<endl;
     }
+    */
 
     return 0;
 }
 
+#endif
 
 
