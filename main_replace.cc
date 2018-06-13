@@ -24,7 +24,8 @@ vector<string> proj_name;
 map<string, string> head_dir_map; 
 
 #define EXTEN_NAME_MAX 8
-#define HEAD_NAME_MAX 30
+#define HEAD_NAME_MAX 40
+#define PROJDIR_NAME_MAX 200
 
 static int  get_exten_name(const char * pathname, char *exten_name)
 {
@@ -57,9 +58,9 @@ static int  get_exten_name(const char * pathname, char *exten_name)
     return 0;
 }
 
-static int get_head_name(const char * pathname, char * head_name)
+static int get_head_projdir_name(const char * pathname, char * head_name, char * projdir_name)
 {
-    int i = 1,length;  
+    int i = 0,length;  
 
     if( pathname == NULL) {
         return -1;
@@ -69,24 +70,51 @@ static int get_head_name(const char * pathname, char * head_name)
 
     while(i < length)  
     {  
-        if (i > HEAD_NAME_MAX) {
+        if (i > HEAD_NAME_MAX) 
+        {
             printf(" i == %d  exten headname overlenth %s\n",i , pathname);
             return -1;
         }
 
-        if(pathname[length - i] == '/')  
+        if (pathname[length - i] == '/')   
         {
-            strncpy(head_name, pathname + (length - i), (i + 1));
-            cout << "head_name" << head_name <<endl;
+            strncpy(head_name, pathname + (length - i + 1), i);
+            cout << "head_name  " << head_name <<endl;
             break;  
         }
 
         i++;  
     }
 
+    int j = i;
+
+    while(j < length) 
+    {  
+        if (j > PROJDIR_NAME_MAX) 
+        {
+            printf(" j == %d  exten headname overlenth %s\n",j , pathname);
+            return -1;
+        }
+
+        if (pathname[length - j] == '/')   
+        {
+            if (pathname[length - j - 1] == '/')   
+            {
+                strncpy(projdir_name, pathname + (length - j), j + 1); // add 1 for "\0"
+                cout << "projdir_name" << projdir_name <<endl;
+                break;  
+            }
+        }
+
+        j++;
+
+    }
+
+
     return 0;
 
 }
+ 
 
 static int is_cpp_file(const char *exten_name )
 {
@@ -162,9 +190,10 @@ int print_file_info(char *pathname)
 
         if (is_head_file(exten_name) == 1) {
             char head_name[HEAD_NAME_MAX];
+            char projdir_name[PROJDIR_NAME_MAX];
             proj_name.push_back(pathname);
-            get_head_name(pathname, head_name);
-            head_dir_map[head_name] = pathname;
+            get_head_projdir_name(pathname, head_name, projdir_name);
+            head_dir_map[head_name] = projdir_name;
         } 
     }
 
