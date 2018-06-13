@@ -27,8 +27,8 @@ vector<string> proj_name;
 map<string, string> head_dir_map; 
 
 #define EXTEN_NAME_MAX 8
-#define HEAD_NAME_MAX 40
-#define PROJDIR_NAME_MAX 200
+#define HEAD_NAME_MAX 60
+#define PROJDIR_NAME_MAX 300
 
 static int  get_exten_name(const char * pathname, char *exten_name)
 {
@@ -302,7 +302,7 @@ int write_file(const char * file_name)
 
     for(auto iter = lines_of_text.begin(); iter != lines_of_text.end(); ++iter) { 
         cout << (*iter) << endl;
-        os << (*iter) << endl;
+        //os << (*iter) << endl;
     }
 
     os.close();
@@ -314,12 +314,14 @@ int replace_file(map<int, string> &line_headdir_map)
 {
 
     for(auto iter = line_headdir_map.begin(); iter != line_headdir_map.end(); ++iter) { 
-        //cout << (*iter).first<< endl;
-        //cout << (*iter).second << endl;
+        cout << (*iter).first<< endl;
+        cout << (*iter).second << endl;
         string temp_include("#include");
         string temp_str(temp_include + ' ' + '\"' + (*iter).second + '\"'); 
-        //cout << temp_str << endl;
-        lines_of_text[(*iter).first] = temp_str;
+        cout << temp_str << endl;
+        if ((*iter).first < lines_of_text.size()) {
+            lines_of_text[(*iter).first] = temp_str;
+        }
     }
 
     return 0;
@@ -336,6 +338,13 @@ static inline void print_map_value( map<int,string> &map)
     }
 }
 
+static inline void print_vector_value( vector<string> &vec)
+{
+    for(auto iter = vec.begin(); iter != vec.end(); ++iter) 
+    {
+        cout<< (*iter) <<endl;
+    }
+}
 #if 1
 int main(int argc, char *argv[])
 {
@@ -347,16 +356,18 @@ int main(int argc, char *argv[])
     }
 
     read_dir(argv[1]);
-    
+
 
     map<int,string> head_line_map;
     map<int,string> line_headdir_map;
 
     for(auto iter = proj_name.begin(); iter != proj_name.end(); ++iter) 
     {
+       // cout << *iter << endl;
         
         read_file((*iter).c_str());
         get_include_line(head_line_map);
+        //print_map_value(head_line_map);
 
         replace_str(head_line_map, line_headdir_map);
         //print_map_value(line_headdir_map);
@@ -365,11 +376,12 @@ int main(int argc, char *argv[])
             continue;         
         } else {
             replace_file(line_headdir_map);
-            write_file((*iter).c_str());
+            //write_file((*iter).c_str());
         }
 
         //cout<< (*iter) <<endl;
     }
+
 /*
     for(auto iter = head_dir_map.begin(); iter != head_dir_map.end(); ++iter) 
     {
