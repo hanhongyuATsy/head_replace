@@ -239,6 +239,8 @@ ifstream& open_file(ifstream &in, const string &file)
 {
     in.close();  // close in case it was already open
     in.clear();  // clear any existing errors
+    lines_of_text.clear();
+
 
     // if the open fails, the stream will be in an invalid state
     in.open(file.c_str()); // open the file we were given
