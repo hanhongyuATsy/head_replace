@@ -216,6 +216,7 @@ ifstream& open_file(ifstream &in, const string &file)
     in.close();  // close in case it was already open
     in.clear();  // clear any existing errors
     lines_of_text.clear();
+    cout<< "read file size =="<< lines_of_text.size()<<endl;
 
     // if the open fails, the stream will be in an invalid state
     in.open(file.c_str()); // open the file we were given
@@ -239,6 +240,7 @@ int read_file(const char * file_name)
     }
 
     store_file(infile);
+    cout<< "read file size =="<< lines_of_text.size()<<endl;
 
     infile.close();
     
@@ -319,9 +321,10 @@ int replace_file(map<int, string> &line_headdir_map)
         string temp_include("#include");
         string temp_str(temp_include + ' ' + '\"' + (*iter).second + '\"'); 
         cout << temp_str << endl;
-        if ((*iter).first < lines_of_text.size()) {
+        cout <<"test seze" << lines_of_text.size() << endl;
+        //if ((*iter).first < lines_of_text.size()) {
             lines_of_text[(*iter).first] = temp_str;
-        }
+        //}
     }
 
     return 0;
@@ -366,17 +369,19 @@ int main(int argc, char *argv[])
        // cout << *iter << endl;
         
         read_file((*iter).c_str());
+        head_line_map.clear();
         get_include_line(head_line_map);
         //print_map_value(head_line_map);
 
+        line_headdir_map.clear();
         replace_str(head_line_map, line_headdir_map);
         //print_map_value(line_headdir_map);
 
         if (line_headdir_map.empty()) {
             continue;         
         } else {
-            replace_file(line_headdir_map);
-            //write_file((*iter).c_str());
+          replace_file(line_headdir_map);
+          //write_file((*iter).c_str());
         }
 
         //cout<< (*iter) <<endl;
