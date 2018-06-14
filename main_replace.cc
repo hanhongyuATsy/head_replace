@@ -30,6 +30,7 @@ map<string, string> head_dir_map;
 #define HEAD_NAME_MAX 60
 #define PROJDIR_NAME_MAX 300
 
+
 static int  get_exten_name(const char * pathname, char *exten_name)
 {
     int i = 1,length;  
@@ -349,6 +350,7 @@ static inline void print_vector_value( vector<string> &vec)
     }
 }
 #if 1
+
 int main(int argc, char *argv[])
 {
     std::cout << "main "<< endl;
@@ -381,7 +383,7 @@ int main(int argc, char *argv[])
             continue;         
         } else {
           replace_file(line_headdir_map);
-          //write_file((*iter).c_str());
+          write_file((*iter).c_str());
         }
 
         //cout<< (*iter) <<endl;
