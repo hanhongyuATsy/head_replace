@@ -12,12 +12,15 @@
 #include <sys/stat.h>  
 #include <unistd.h>  
 
-TextQuery::ifstream& open_file(ifstream &in, const string &file)
+#include "text_query.h"
+using namespace std;  
+
+ifstream& TextQuery:: open_file(ifstream &in, const string &file)
 {
     in.close();  // close in case it was already open
     in.clear();  // clear any existing errors
     file_buf.clear();
-    cout<< "read file size =="<< lines_of_text.size()<<endl;
+    cout<< "read file size =="<< file_buf.size()<<endl;
 
     // if the open fails, the stream will be in an invalid state
     in.open(file.c_str()); // open the file we were given
@@ -32,7 +35,7 @@ void TextQuery::store_file(ifstream &is)
        file_buf.push_back(textline);
 }
 
-TextQuery::read_file(const char *file_name)
+int TextQuery::read_file(const char *file_name)
 {
 
     ifstream infile;
@@ -48,7 +51,7 @@ TextQuery::read_file(const char *file_name)
     return 0;
 }
 
-vector<line_no> TextQuery:: query_str_location(string str)       
+vector<TextQuery::line_no> TextQuery::query_str_location(string str)       
 {
     vector<line_no> line_no_vec;
     for (line_no line_num = 0; line_num != file_buf.size(); ++line_num)
@@ -61,22 +64,40 @@ vector<line_no> TextQuery:: query_str_location(string str)
     return line_no_vec;
 }
 
-vector<line_no> TextQuery::query_str_location(string str1, string str2)        
+vector<TextQuery::line_no> TextQuery::query_str_location(string str1, string str2)        
 {
     vector<line_no> line_no_vec;
     for (line_no line_num = 0; line_num != file_buf.size(); ++line_num)
     {
-        int local1 = file_buf[line_num].find(str); 
-        int local2 = file_buf[line_num].find(str); 
+        int local1 = file_buf[line_num].find(str1); 
+        int local2 = file_buf[line_num].find(str2); 
         if ((local1 >= 0) && (local2 >= 0)) {
             line_no_vec.push_back(line_num);
         }
     }
     return line_no_vec;
 }
+/*
+int TextQuery::file_substitute_string(string src_str, string dst_str)
+{
+    int sub_cnt = 0;
+    for (line_no line_num = 0; line_num != file_buf.size(); ++line_num)
+    {
+    
+    }
 
+    return sub_cnt;
+}
 
-void TextQuery::store_file(ifstream &is)
+int TextQuery::file_substitute_string(line_no line, string src_str, string dst_str)
+{
+    if(line > 0 && file_buf.size())
+    else
+        return -1;
+}
+*/
+
+int TextQuery::write_file(const char * file_name)
 {
     ofstream os(file_name);
     if(!os) {
@@ -91,6 +112,5 @@ void TextQuery::store_file(ifstream &is)
     os.close();
 
     return 0;
-
 }
 

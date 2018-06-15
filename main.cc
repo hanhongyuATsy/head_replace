@@ -18,6 +18,7 @@
 #include <fstream>
 
 #include"common_tools.h"
+#include"text_query.h"
 
 using namespace std;  
 int main(int argc, char *argv[])
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
 		printf("usage: ls directory_name \n");
         return 0;
     }
-
+#if 0
     ListFile proj_root(argv[1]);
 
     //vector<string> file_name_list = proj_root.get_all_fliename();
@@ -38,6 +39,15 @@ int main(int argc, char *argv[])
     {
         cout<< (*iter) <<endl;
     }
+#endif
+
+    TextQuery text_test;
+
+    text_test.read_file(argv[1]);
+    vector<TextQuery::line_no> line  = text_test.query_str_location("#include", "\"");
+
+    for (TextQuery::line_no line_num = 0; line_num != line.size(); ++line_num)
+        cout<< line[line_num] << endl;
 
     return 0;
 }
