@@ -77,25 +77,44 @@ vector<TextQuery::line_no> TextQuery::query_str_location(string str1, string str
     }
     return line_no_vec;
 }
-/*
+
 int TextQuery::file_substitute_string(string src_str, string dst_str)
 {
     int sub_cnt = 0;
     for (line_no line_num = 0; line_num != file_buf.size(); ++line_num)
     {
-    
+        int local = file_buf[line_num].find(src_str);    
+        //int len_src = src_str.length();
+        //cout << len_src << endl;
+        if(local >= 0) {
+            file_buf[line_num].replace(local, src_str.length(),dst_str);
+            cout<<file_buf[line_num]<<endl;
+            sub_cnt++;
+        } 
     }
 
     return sub_cnt;
 }
 
-int TextQuery::file_substitute_string(line_no line, string src_str, string dst_str)
+int TextQuery::file_substitute_string(line_no line_num, string src_str, string dst_str)
 {
-    if(line > 0 && file_buf.size())
+    if(line_num >= 0 && file_buf.size())
+    {
+        int local = file_buf[line_num].find(src_str);    
+        if(local >= 0) {
+            file_buf[line_num].replace(local, src_str.length(),dst_str);
+            cout<<file_buf[line_num]<<endl;
+        }else {
+            printf("can not find src_str\n");
+        }
+    }
     else
+    {
+        printf("input line_no over bufsize\n");
         return -1;
+    }
 }
-*/
+
 
 int TextQuery::write_file(const char * file_name)
 {
@@ -105,8 +124,8 @@ int TextQuery::write_file(const char * file_name)
     }
 
     for(auto iter = file_buf.begin(); iter != file_buf.end(); ++iter) { 
-        cout << (*iter) << endl;
-        //os << (*iter) << endl;
+        //cout << (*iter) << endl;
+        os << (*iter) << endl;
     }
 
     os.close();
@@ -114,3 +133,20 @@ int TextQuery::write_file(const char * file_name)
     return 0;
 }
 
+string TextQuery::get_line_text(line_no line_num) 
+{
+//    cout<<"fun get_line_text"<< line_num<<endl;
+    if (line_num < file_buf.size())
+    {
+//        cout<<file_buf[line_num]<<endl;
+        return file_buf[line_num];    
+    }
+
+}
+
+int TextQuery::show_file()
+{
+    for(auto iter=file_buf.begin(); iter!=file_buf.end();++iter)
+        cout<<*iter<<endl;
+
+}

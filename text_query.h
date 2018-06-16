@@ -1,7 +1,6 @@
 #ifndef _TEXT_QUERY_H_
 #define _TEXT_QUERY_H_
 
-
 #include<iostream>  
 #include<string>  
 #include<set>
@@ -18,6 +17,11 @@
 
 using namespace std;  
 
+enum coding_format {
+    UTF8  = 0,
+    GB18030 = 0,
+};
+
 class TextQuery {
     public:
         typedef std::vector<std::string>::size_type line_no;
@@ -26,12 +30,15 @@ class TextQuery {
         vector<line_no> query_str_location(string str);        
         vector<line_no> query_str_location(string str1, string str2);        
 
-        string  query_str_between_towstr(line_no line, string str_first, string str_last);        
+        string get_line_text(line_no);
+        //string  query_str_between_towstr(line_no line_num, string str_first, string str_last);        
 
         int file_substitute_string(string src_str, string dst_str);
-        int file_substitute_string(line_no line, string src_str, string dst_str);
+        int file_substitute_string(line_no line_num, string src_str, string dst_str);
+        int convert_format(enum coding_format src_format);
 
         int write_file(const char *file_name);
+        int show_file();
     private:
         vector<string> file_buf;
 
@@ -39,10 +46,6 @@ class TextQuery {
         void store_file(ifstream &is);
 
 };
-
-
-
-
 
 
 

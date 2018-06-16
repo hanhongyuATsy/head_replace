@@ -28,6 +28,7 @@ class ListFile {
         ListFile(const char* dir_name);
         ~ListFile();
 
+        typedef std::vector<std::string>::size_type file_path_no;
         const vector<string> & get_all_fliename(void);
         const vector<string> & get_cpp_fliename(void);
         const vector<string> & get_head_fliename(void);

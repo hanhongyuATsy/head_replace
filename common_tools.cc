@@ -80,7 +80,7 @@ int ListFile::analyse_exten_name_types(string file_name)
     int local = file_name.find_last_of(".");  
 
     if(local < 0) {
-        printf("can not find exten_name\n");
+        printf("can not find exten_name at %s\n",file_name.c_str());
         return -1;
     }
     string exten_name = file_name.substr(local); 
@@ -122,6 +122,7 @@ const vector<string> & ListFile::get_cpp_fliename()
 {
     return cpp_file_name;
 }
+
 const vector<string> & ListFile::get_head_fliename()
 {
     return head_file_name;
