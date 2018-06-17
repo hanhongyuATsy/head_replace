@@ -22,6 +22,7 @@
 
 #include "common_tools.h"
 #include "text_query.h"
+#define HEADFILE_MULTI
 
 class ReplaceHeadFile {
     public:
@@ -31,15 +32,21 @@ class ReplaceHeadFile {
     private:
         string find_head_name(const string &line_text);
         int build_head_dir_map(const vector<string> &head_file);
+        int compare_str_loc(string, string);
         int replace_head_to_headdir(const char *file_name);
-        void display_map();
 
         //ListFile *proj; 
 
         TextQuery file; 
         string proj_name;
 
+#ifdef HEADFILE_MULTI
+        multimap<string, string> head_headdir_multimap;
+        void display_multimap();
+#else
         map<string, string> head_headdir_map;
+        void display_map();
+#endif
 };
 
 

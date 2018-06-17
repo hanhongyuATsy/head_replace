@@ -20,7 +20,7 @@ ifstream& TextQuery:: open_file(ifstream &in, const string &file)
     in.close();  // close in case it was already open
     in.clear();  // clear any existing errors
     file_buf.clear();
-    cout<< "read file size =="<< file_buf.size()<<endl;
+    //cout<< "read file size =="<< file_buf.size()<<endl;
 
     // if the open fails, the stream will be in an invalid state
     in.open(file.c_str()); // open the file we were given
@@ -88,7 +88,7 @@ int TextQuery::file_substitute_string(string src_str, string dst_str)
         //cout << len_src << endl;
         if(local >= 0) {
             file_buf[line_num].replace(local, src_str.length(),dst_str);
-            cout<<file_buf[line_num]<<endl;
+            //cout<<file_buf[line_num]<<endl;
             sub_cnt++;
         } 
     }
@@ -103,7 +103,7 @@ int TextQuery::file_substitute_string(line_no line_num, string src_str, string d
         int local = file_buf[line_num].find(src_str);    
         if(local >= 0) {
             file_buf[line_num].replace(local, src_str.length(),dst_str);
-            cout<<file_buf[line_num]<<endl;
+            //cout<<file_buf[line_num]<<endl;
         }else {
             printf("can not find src_str\n");
         }
