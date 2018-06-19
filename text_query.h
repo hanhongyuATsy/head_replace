@@ -22,6 +22,12 @@ enum coding_format {
     GB18030 = 0,
 };
 
+/* class TextQuery for read a file in buf(vecotr)
+ * change file string and read file coding format
+ * and file lines et.
+ *
+ */
+
 class TextQuery {
     public:
         typedef std::vector<std::string>::size_type line_no;
@@ -38,6 +44,8 @@ class TextQuery {
         //int convert_format(enum coding_format src_format);
         string get_coding_format(const char *file_name);
 
+        int get_file_lines(void);
+
         int write_file(const char *file_name);
         int show_file();
     private:
@@ -46,8 +54,6 @@ class TextQuery {
 
         ifstream& open_file(ifstream &in, const string &file);
         void store_file(ifstream &is);
-
-
 };
 
 

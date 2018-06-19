@@ -185,3 +185,10 @@ int TextQuery::show_file()
         cout<<*iter<<endl;
 
 }
+
+int TextQuery::get_file_lines()
+{
+    return file_buf.size();
+}
+
+

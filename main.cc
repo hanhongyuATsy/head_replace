@@ -48,19 +48,27 @@ int main(int argc, char *argv[])
     //cout << "file num == "<< file_name_list.size() << endl;
     //dprice.build_head_dir_map(file_name_list);
     //dprice.display_map();
-
+    printf("file count %d\n", proj_root.get_all_file_count());
+    unsigned long lines = 0;
     
     for(auto iter = cpp_name_list.begin(); iter != cpp_name_list.end(); ++iter) 
     {
-      text_test.get_coding_format((*iter).c_str());
+      //text_test.get_coding_format((*iter).c_str());
       //  cout<< (*iter) <<endl;
+      text_test.read_file((*iter).c_str());
+      lines += text_test.get_file_lines();
+
     }
 
     for(auto iter = head_name_list.begin(); iter != head_name_list.end(); ++iter) 
     {
-      text_test.get_coding_format((*iter).c_str());
+      text_test.read_file((*iter).c_str());
+      lines += text_test.get_file_lines();
+      //text_test.get_coding_format((*iter).c_str());
       //  cout<< (*iter) <<endl;
     }
+
+    printf("lines %ld\n", lines);
 
 #endif
 

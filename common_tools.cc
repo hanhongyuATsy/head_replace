@@ -128,5 +128,18 @@ const vector<string> & ListFile::get_head_fliename()
     return head_file_name;
 }
 
+int ListFile::get_all_file_count()
+{
+    return all_file_name.size();
+}
+int ListFile::get_cpp_file_count()
+{
+    return cpp_file_name.size();
+}
+int ListFile::get_head_file_count()
+{
+    return head_file_name.size();
+}
+
 
 

@@ -22,6 +22,14 @@ enum file_type {
 
     unknow_file = -1,
 };
+/* 
+ * class ListFIle for Traversing directory
+ * and classify file by exten name.
+ *
+ *  
+ *
+ *
+ * */
 
 class ListFile {
     public:
@@ -32,6 +40,10 @@ class ListFile {
         const vector<string> & get_all_fliename(void);
         const vector<string> & get_cpp_fliename(void);
         const vector<string> & get_head_fliename(void);
+
+        int get_all_file_count(void);
+        int get_cpp_file_count(void);
+        int get_head_file_count(void);
 
     private:
         int traverse_dir(const char * dir_name);
