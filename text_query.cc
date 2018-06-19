@@ -115,6 +115,41 @@ int TextQuery::file_substitute_string(line_no line_num, string src_str, string d
     }
 }
 
+int TextQuery::my_system(char *cmd, char* buff, int len)
+{
+    FILE *fstream = NULL;
+
+    if(NULL == (fstream = popen(cmd,"r")))      
+    {     
+        fprintf(stderr,"execute command failed");      
+        return -1;      
+    }   
+
+    while(NULL != fgets(buff, len, fstream)) 
+    {  
+        ;//printf("buff %s",buff);    
+    }  
+    pclose(fstream); 
+}
+
+#define CMD_STR_LEN 1024
+string TextQuery::get_coding_format(const char *file_name)
+{
+
+    char cmd[CMD_STR_LEN] = {0};
+    char ex_buf[CMD_STR_LEN] = {0};
+
+    sprintf(cmd, "file %s", file_name);
+    //printf("cmd :%s", cmd);
+    my_system(cmd, ex_buf, sizeof(ex_buf));
+
+    //printf("ex_buf:%s", ex_buf);
+    string coding_format(ex_buf);
+    cout<<coding_format<<endl;
+
+    return coding_format; 
+}
+
 
 int TextQuery::write_file(const char * file_name)
 {

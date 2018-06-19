@@ -35,15 +35,18 @@ class TextQuery {
 
         int file_substitute_string(string src_str, string dst_str);
         int file_substitute_string(line_no line_num, string src_str, string dst_str);
-        int convert_format(enum coding_format src_format);
+        //int convert_format(enum coding_format src_format);
+        string get_coding_format(const char *file_name);
 
         int write_file(const char *file_name);
         int show_file();
     private:
         vector<string> file_buf;
+        int my_system(char *cmd, char* buff, int len);
 
         ifstream& open_file(ifstream &in, const string &file);
         void store_file(ifstream &is);
+
 
 };
 
