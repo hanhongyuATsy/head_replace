@@ -23,6 +23,12 @@
 #include "common_tools.h"
 #include "text_query.h"
 #define HEADFILE_MULTI
+/*
+ * ReplaceHeadFile for cpp file and head file #include "xxx.h" replace to #include　“/proj/xxx/xxx.h” 
+ *
+ *
+ *
+ * */
 
 class ReplaceHeadFile {
     public:
