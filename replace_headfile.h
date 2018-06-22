@@ -41,7 +41,6 @@ class ReplaceHeadFile {
         int compare_str_loc(string, string);
         int replace_head_to_headdir(const char *file_name);
 
-        //ListFile *proj; 
 
         TextQuery file; 
         string proj_name;

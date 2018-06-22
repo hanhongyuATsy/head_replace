@@ -23,7 +23,7 @@ enum file_type {
     unknow_file = -1,
 };
 /* 
- * class ListFIle for Traversing directory
+ * class ListFile for Traversing directory
  * and classify file by exten name.
  *
  *  
