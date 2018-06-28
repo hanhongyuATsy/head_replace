@@ -1,20 +1,33 @@
-#all: main main_test
 CC=g++
-all: main 
 
-CFLAGS = -std=c++11
+all: main main_test
+
+CFLAGS = -std=c++11 -lpthread
 
 
-#PROJECT_HOME = .
+PROJECT_HOME = .
 
-#UNIT_TEST = $(PROJECT_HOME)/unit_test/gtest_main.o
 
+MAIN_OBJECTS = main.o
 PROJECT_OBJECTS = text_query.o common_tools.o replace_headfile.o  
 
-main: main.o $(PROJECT_OBJECTS)
-	$(CC) main.o $(PROJECT_OBJECTS) -o $@
+PROJECT_MAIN = $(PROJECT_OBJECTS)\
+			   $(MAIN_OBJECTS)
 
-#main_test:
+UNIT_TEST = $(PROJECT_HOME)/unit_test/gtest_main.o
+PROJECT_UNITTEST = $(PROJECT_OBJECTS)\
+				   $(UNIT_TEST)
+
+APP_INCLUDE = -I$(PROJECT_HOME)/unit_test/include 
+
+APP_LIB = -L$(PROJECT_HOME)/unit_test/lib -lgmock
+
+main: $(PROJECT_MAIN)
+	$(CC) $(PROJECT_MAIN) -o $@
+
+main_test:$(PROJECT_UNITTEST) 
+	$(CC) $(PROJECT_UNITTEST) $(APP_LIB) $(APP_INCLUDE) $(CFLAGS) -o $@
+	
 
 .cc.o:
 	$(CC) $(CFLAGS) -c $*.cc -o $*.o 
