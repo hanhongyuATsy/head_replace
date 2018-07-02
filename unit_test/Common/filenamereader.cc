@@ -15,6 +15,7 @@
  */
 
 #include "filenamereader.h"
+#include "freefunc.h"
 
 int FileNameReader::readFileName(const string& dirName, vector<string>& vecFileName)
 {
@@ -47,20 +48,22 @@ int FileNameReader::readFileName(const string& dirName, vector<string>& vecFileN
              * 在目录里可以存放一些说明文档,所以不能通过文件类型进行区分
             */
             // 判断普通文件
+            /*
             struct stat buf;
             stat(fileName.c_str(), &buf);
             if(S_ISREG(buf.st_mode))
             {
                 vecFileName.push_back(fileName);
             }
+            */
 
             // 单元测试数据存放在xml文件中
             // if(fileName.find(".xml") != string::npos)
             // 避免.xx.xml.swp临时文件干扰
-            //if(FreeFun::wildcardCompare("*.xml", fileName.c_str()))
-            //{
-            //    vecFileName.push_back(fileName);
-            //}
+            if(FreeFun::wildcardCompare("*.xml", fileName.c_str()))
+            {
+                vecFileName.push_back(fileName);
+            }
         }
     }
     else

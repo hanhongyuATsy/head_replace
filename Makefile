@@ -2,7 +2,7 @@ CC=g++
 
 all: main main_test
 
-CFLAGS = -std=c++11 -lpthread -lz
+CFLAGS = -std=c++11 -lpthread -lz 
 
 
 PROJECT_HOME = .
@@ -48,15 +48,10 @@ main_test:$(PROJECT_UNITTEST)
 	$(CC) $(CFLAGS) $(UNITEST_INC) -c $*.cc -o $*.o 
 
 clean:
-	rm *.o 
-	rm main
+	rm $(PROJECT_UNITTEST)
 	rm *~
 	rm .*~
-	rm a.out
-	rm main_test
 	rm unit_test/*~
 	rm unit_test/.*~
-	rm unit_test/*.o
 	rm unit_test/Common/*~
 	rm unit_test/Common/.*~
-	rm unit_test/Common/*.o
