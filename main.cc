@@ -60,8 +60,8 @@ int main(int argc, char *argv[])
     
     for(auto iter = cpp_name_list.begin(); iter != cpp_name_list.end(); ++iter) 
     {
-      text_test.get_coding_format((*iter).c_str());
-      //cout<< (*iter) <<endl;
+      //text_test.get_coding_format((*iter).c_str());
+      cout<< (*iter) <<endl;
       //text_test.read_file((*iter).c_str());
       //lines += text_test.get_file_lines();
 
@@ -69,10 +69,10 @@ int main(int argc, char *argv[])
 
     for(auto iter = head_name_list.begin(); iter != head_name_list.end(); ++iter) 
     {
-      text_test.get_coding_format((*iter).c_str());
+      //text_test.get_coding_format((*iter).c_str());
       //text_test.read_file((*iter).c_str());
       //lines += text_test.get_file_lines();
-      //  cout<< (*iter) <<endl;
+        cout<< (*iter) <<endl;
     }
 
     //printf("lines %ld\n", lines);
