@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!--根据单位Days计算时间差,返回时间差-->
+<root>
+    <input>
+        <dealDir>/home/hhy/code/c++/test</dealDir>
+        <fileCnt>129</fileCnt>
+    </input>
+    <output>
+        <retVal>14</retVal>
+    </output>
+</root>

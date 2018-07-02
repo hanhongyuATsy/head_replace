@@ -49,9 +49,13 @@ main_test:$(PROJECT_UNITTEST)
 
 clean:
 	rm $(PROJECT_UNITTEST)
+	rm $(MAIN_OBJECTS)
+	rm main
+	rm main_test
 	rm *~
 	rm .*~
 	rm unit_test/*~
 	rm unit_test/.*~
 	rm unit_test/Common/*~
 	rm unit_test/Common/.*~
+
