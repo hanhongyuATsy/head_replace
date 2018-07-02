@@ -49,8 +49,14 @@ main_test:$(PROJECT_UNITTEST)
 
 clean:
 	rm *.o 
-	rm $(UNIT_TEST) 
 	rm main
 	rm *~
 	rm .*~
+	rm a.out
 	rm main_test
+	rm unit_test/*~
+	rm unit_test/.*~
+	rm unit_test/*.o
+	rm unit_test/Common/*~
+	rm unit_test/Common/.*~
+	rm unit_test/Common/*.o
