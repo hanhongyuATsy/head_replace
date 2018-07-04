@@ -1,45 +1,13 @@
-#include "gtest/gtest.h"
-#include "../common_tools.h"
-
-#include "filenamereader.h"
-#include "filetxtreader.h"
 
 //using ::testing::Return; 
 //using ::testing::_;
 //using ::testing::DoAll;
 //
-using namespace std;
+#include    "common_tools_test.h"
 
-class ListFileValidationTest: public testing::Test
+TEST_F(ListFileValidationTest,get_all_file_count_Test)
 {
-
-protected:
-    void SetUp();
-    void TearDown();
-
-public:
-    /**
-     * @brief     测试TicketTimeValidation::operator()
-     * @param[in]
-     * @param[out]
-     * @return
-     */
-    void operatorTest();
-
-private:
-    void parseOperatorParam(const string& fileName,string &file_cnt,string &dir_name);
-    // 读取测试数据文件名
-    FileNameReader _fileNameReader;
-    // 解析测试数据
-    FileTxtReader _fileTxtReader;
-
-    vector<string> _vecOperatorFileName;
-
-};
-
-TEST_F(ListFileValidationTest, operatorTest)
-{
-    operatorTest();
+    get_all_file_count_Test();
 }
 
 void ListFileValidationTest::SetUp()
@@ -61,7 +29,7 @@ void ListFileValidationTest::TearDown()
     cout << "ListFile gtest teardown()"<<endl;
 }
 
-void ListFileValidationTest::operatorTest()
+void ListFileValidationTest::get_all_file_count_Test()
 {
     cout<< "operatorTest"<<endl;
 
@@ -70,11 +38,11 @@ void ListFileValidationTest::operatorTest()
     for(unsigned int i = 0; i < _vecOperatorFileName.size(); i++)
     {
         parseOperatorParam(_vecOperatorFileName[i], file_cnt, dir_name);
-    }
 
-    ListFile   proj_dir(dir_name.c_str());    
-    int num = atoi(file_cnt.c_str());
-    EXPECT_EQ(num, proj_dir.get_all_file_count());
+        ListFile   proj_dir(dir_name.c_str());    
+        int num = atoi(file_cnt.c_str());
+        EXPECT_EQ(num, proj_dir.get_all_file_count());
+    }
 }
 
 void ListFileValidationTest::parseOperatorParam(const string& fileName, string &file_cnt,string &dir_name)

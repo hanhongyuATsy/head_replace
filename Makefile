@@ -23,7 +23,8 @@ UNITTEST_COMMON_OBJECTS = $(PROJECT_HOME)/unit_test/Common/filetxtreader.o \
 
 
 UNIT_TEST = $(PROJECT_HOME)/unit_test/gtest_main.o\
-			$(PROJECT_HOME)/unit_test/common_tools_test.o
+			$(PROJECT_HOME)/unit_test/common_tools_test.o\
+			$(PROJECT_HOME)/unit_test/text_query_test.o
 
 
 			   
