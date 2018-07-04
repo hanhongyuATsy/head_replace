@@ -2,9 +2,13 @@
 #define _COMMON_TOOLS_TEST_H
 
 #include "gtest/gtest.h"
-#include "../common_tools.h"
 #include "filenamereader.h"
 #include "filetxtreader.h"
+#include "../common_tools.h"
+
+//#define _DEBUG
+
+#include "../def_log.h"
 
 using namespace std;
 

@@ -12,7 +12,7 @@ TEST_F(ListFileValidationTest,get_all_file_count_Test)
 
 void ListFileValidationTest::SetUp()
 {
-    cout << "ListFile gtest setup"<<endl;
+    LOGFUNC("setup\n");
     // 存放测试数据目录,直接赋值,没有采用xml文件管理是为了方便配置
     string dirName;
 
@@ -26,12 +26,11 @@ void ListFileValidationTest::SetUp()
 
 void ListFileValidationTest::TearDown()
 {
-    cout << "ListFile gtest teardown()"<<endl;
+    LOGFUNC("TearDown\n");
 }
 
 void ListFileValidationTest::get_all_file_count_Test()
 {
-    cout<< "operatorTest"<<endl;
 
     string file_cnt;
     string dir_name;
@@ -47,9 +46,8 @@ void ListFileValidationTest::get_all_file_count_Test()
 
 void ListFileValidationTest::parseOperatorParam(const string& fileName, string &file_cnt,string &dir_name)
 {
-    cout<< "parseOperatorParam"<<endl;
 
-    cout<< "fileName = " << fileName<<endl;
+    LOGFUNC("fileName = %s\n", fileName.c_str());
     string fileTxt = _fileTxtReader.getFileTxt(fileName);
     // rapidxml 解析xml字符串
     rapidxml::xml_document<> doc;
@@ -73,14 +71,14 @@ void ListFileValidationTest::parseOperatorParam(const string& fileName, string &
         if(NULL != isDateDirNode)
         {
             dir_name = isDateDirNode->value();
-            cout << "parseOperatorParam get dir name = " << dir_name<< endl;
+            LOGFUNC("dir_name= %s\n", dir_name.c_str());
         }
 
         rapidxml::xml_node<>* issueDateTimeNode = inputNode->first_node("fileCnt");
         if(NULL != issueDateTimeNode)
         {
             file_cnt = issueDateTimeNode->value();
-            cout << "parseOperatorParam get file_cnt = " << file_cnt<< endl;
+            LOGFUNC("file_cnt= %s\n", file_cnt.c_str());
         }
     }
 

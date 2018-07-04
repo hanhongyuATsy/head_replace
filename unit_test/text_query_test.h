@@ -5,8 +5,15 @@
 #include "filenamereader.h"
 #include "filetxtreader.h"
 #include "../text_query.h"
+#include "../def_log.h"
+
 
 using namespace std;
+
+struct file_info {
+    string name;
+    int lines;
+};
 
 class TextQueryTest: public testing::Test
 {
@@ -16,12 +23,7 @@ protected:
     void TearDown();
 
 public:
-    /**
-     * @brief     测试ListFile::get_all_file_count()
-     * @param[in]
-     * @param[out]
-     * @return
-     */
+
     void read_file_Test();
 //    void query_str_location_Test();
 //    void get_file_lines_Test();
@@ -30,7 +32,7 @@ public:
 
 
 private:
-    void parseOperatorParam(const string& fileName, string &file);
+    void parseOperatorParam(const string& fileName, struct file_info &file);
     // 读取测试数据文件名
     FileNameReader _fileNameReader;
     // 解析测试数据

@@ -7,7 +7,7 @@ TEST_F(TextQueryTest,read_file_Test)
 
 void TextQueryTest::SetUp()
 {
-    cout << "TextQueryTestgtest setup"<<endl;
+    LOGFUNC("setup\n");
     // 存放测试数据目录,直接赋值,没有采用xml文件管理是为了方便配置
     string dirName;
 
@@ -21,31 +21,26 @@ void TextQueryTest::SetUp()
 
 void TextQueryTest::TearDown()
 {
-    cout << "TextQueryTestgtest gtest teardown()"<<endl;
+    LOGFUNC("TearDown\n");
 }
 
 void TextQueryTest::read_file_Test()
 {
-    cout<< "read_file_Test"<<endl;
+    struct file_info file_info;
 
-    string file_name;
-    string file_cnt;
     int retval = 0;
     for(unsigned int i = 0; i < _vecOperatorFileName.size(); i++)
     {
-        parseOperatorParam(_vecOperatorFileName[i], file_name);
+        parseOperatorParam(_vecOperatorFileName[i], file_info);
 
-        //ASSERT_GE(retval, file.read_file(file_name.c_str()));
-        EXPECT_EQ(0, file.read_file(file_name.c_str()));
-
+        EXPECT_EQ(0, file.read_file(file_info.name.c_str()));
+        EXPECT_EQ(file_info.lines, file.get_file_lines());
     }
 }
 
-void TextQueryTest::parseOperatorParam(const string& fileName, string &file)
+void TextQueryTest::parseOperatorParam(const string& fileName, struct file_info &file)
 {
-    cout<< "parseOperatorParam"<<endl;
-
-    cout<< "fileName = " << fileName<<endl;
+    LOGFUNC("fileName = %s\n", fileName.c_str());
     string fileTxt = _fileTxtReader.getFileTxt(fileName);
     // rapidxml 解析xml字符串
     rapidxml::xml_document<> doc;
@@ -68,20 +63,27 @@ void TextQueryTest::parseOperatorParam(const string& fileName, string &file)
         rapidxml::xml_node<>* isReadFileNameNode= inputNode->first_node("file");
         if(NULL != isReadFileNameNode)
         {
-            file = isReadFileNameNode->value();
-            cout << "parseOperatorParam get dir name = " << file << endl;
+            file.name = isReadFileNameNode->value();
+            LOGFUNC("file.name = %s\n", file.name.c_str());
+        }
+        rapidxml::xml_node<>* isReadFileLinesNode= inputNode->first_node("lines");
+        if(NULL != isReadFileLinesNode)
+        {
+            string lines = isReadFileLinesNode->value();
+            file.lines = atoi(lines.c_str());
+            LOGFUNC("file.lines = %d\n", file.lines);
         }
     }
 
     rapidxml::xml_node<>* outputNode = rootNode->first_node("output");
-    string retval;
+
     if(NULL != outputNode)
     {
         rapidxml::xml_node<>* isretValNode = outputNode->first_node("retVal");
         if(NULL != isretValNode)
         {
-            retval = isretValNode->value();
-            cout << "parseOperatorParam get retval= " << retval << endl;
+            string retval = isretValNode->value();
+            LOGFUNC("retval = %s\n", retval.c_str());
         }
     }
 
