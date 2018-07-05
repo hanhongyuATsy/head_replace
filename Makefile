@@ -2,8 +2,10 @@ CC=g++
 
 all: main main_test
 
-CFLAGS = -std=c++11 -lpthread -lz 
+CXXFLAGS +=  -fprofile-arcs -ftest-coverage
+LDFLAGS += -std=c++11 -lpthread -lz -lgcov
 
+#-fprofile-arcs -ftest-coverage -lgcov --coverage
 
 PROJECT_HOME = .
 
@@ -40,23 +42,21 @@ UNITEST_INC = -I$(PROJECT_HOME)/unit_test/Common\
 			  $(GTEST_INCLUDE) 
 
 main: $(PROJECT_MAIN)
-	$(CC) $(PROJECT_MAIN) -o $@
+	$(CC) $(PROJECT_MAIN)  $(CXXFLAGS) $(LDFLAGS) -o $@
 
 main_test:$(PROJECT_UNITTEST) 
-	$(CC) $(PROJECT_UNITTEST) $(GTEST_LIB) $(UNITEST_INC) $(CFLAGS) -o $@
+	$(CC) $(PROJECT_UNITTEST) $(GTEST_LIB) $(UNITEST_INC)  $(CXXFLAGS) $(LDFLAGS) -o $@ 
 	
 .cc.o:$(UNITEST_INC) 
-	$(CC) $(CFLAGS) $(UNITEST_INC) -c $*.cc -o $*.o 
+	$(CC) $(CXXFLAGS) $(LDFLAGS) $(UNITEST_INC) -c $*.cc -o $*.o 
 
 clean:
 	rm $(PROJECT_UNITTEST)
 	rm $(MAIN_OBJECTS)
 	rm main
 	rm main_test
-	rm *~
-	rm .*~
-	rm unit_test/*~
-	rm unit_test/.*~
-	rm unit_test/Common/*~
-	rm unit_test/Common/.*~
+	find . -name "*.o" -exec rm {} \;
+	find . -name "*.gcno" -exec rm {} \;
+	find . -name "*.gcda" -exec rm {} \;
+	find . -name "*~" -exec rm {} \;
 
