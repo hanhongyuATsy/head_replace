@@ -4,6 +4,8 @@
     <input>
         <dealDir>/home/hhy/code</dealDir>
         <fileCnt>128</fileCnt>
+        <cppfileCnt>0</cppfileCnt>
+        <headfileCnt>0</headfileCnt>
     </input>
     <output>
         <retVal>0</retVal>

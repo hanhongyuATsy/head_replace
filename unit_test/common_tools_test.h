@@ -12,6 +12,13 @@
 
 using namespace std;
 
+struct dir_info {
+    string name;
+    int file_cnt;
+    int cpp_file_cnt;
+    int head_file_cnt;
+};
+
 class ListFileValidationTest: public testing::Test
 {
 
@@ -27,9 +34,11 @@ public:
      * @return
      */
     void get_all_file_count_Test();
+    void get_cpp_file_count_Test();
+    void get_head_file_count_Test();
 
 private:
-    void parseOperatorParam(const string& fileName,string &file_cnt,string &dir_name);
+    void parseOperatorParam(const string& fileName, struct dir_info & dir);
     // 读取测试数据文件名
     FileNameReader _fileNameReader;
     // 解析测试数据
