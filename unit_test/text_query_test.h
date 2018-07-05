@@ -4,8 +4,8 @@
 #include "gtest/gtest.h"
 #include "filenamereader.h"
 #include "filetxtreader.h"
-#include "../text_query.h"
-#include "../def_log.h"
+#include "text_query.h"
+#include "def_log.h"
 
 
 using namespace std;

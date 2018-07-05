@@ -3,7 +3,7 @@
 #!/usr/bin/lcov
 #!/usr/bin/genhtml
 
-find ./ -name "*.cc" -o -name "*.cpp" | xargs gcov
+find ./src -name "*.cc" -o -name "*.cpp" | xargs gcov
 
-lcov -d ./ -c -o unittest.info
+lcov -d ./src -c -o unittest.info
 genhtml -o results unittest.info

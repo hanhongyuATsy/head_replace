@@ -10,8 +10,10 @@ LDFLAGS += -std=c++11 -lpthread -lz -lgcov
 PROJECT_HOME = .
 
 
-MAIN_OBJECTS = main.o
-PROJECT_OBJECTS = text_query.o common_tools.o replace_headfile.o  
+MAIN_OBJECTS = $(PROJECT_HOME)/src/main.o
+PROJECT_OBJECTS = $(PROJECT_HOME)/src/text_query.o\
+				  $(PROJECT_HOME)/src/common_tools.o\
+				  $(PROJECT_HOME)/src/replace_headfile.o
 
 PROJECT_MAIN = $(PROJECT_OBJECTS)\
 			   $(MAIN_OBJECTS)
@@ -37,7 +39,8 @@ PROJECT_UNITTEST = $(UNIT_TEST)\
 GTEST_INCLUDE = -I$(PROJECT_HOME)/unit_test/include 
 GTEST_LIB = -L$(PROJECT_HOME)/unit_test/lib -lgmock
 
-UNITEST_INC = -I$(PROJECT_HOME)/unit_test/Common\
+UNITEST_INC = -I$(PROJECT_HOME)/include/\
+			  -I$(PROJECT_HOME)/unit_test/Common\
               -I$(PROJECT_HOME)/unit_test/Common/RapidXml\
 			  $(GTEST_INCLUDE) 
 

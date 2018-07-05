@@ -4,11 +4,11 @@
 #include "gtest/gtest.h"
 #include "filenamereader.h"
 #include "filetxtreader.h"
-#include "../common_tools.h"
+#include "common_tools.h"
 
 //#define _DEBUG
 
-#include "../def_log.h"
+#include "def_log.h"
 
 using namespace std;
 
