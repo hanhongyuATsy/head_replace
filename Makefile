@@ -53,6 +53,8 @@ main_test:$(PROJECT_UNITTEST)
 .cc.o:$(UNITEST_INC) 
 	$(CC) $(CXXFLAGS) $(LDFLAGS) $(UNITEST_INC) -c $*.cc -o $*.o 
 
+.PHONY: clean
+
 clean:
 	rm $(PROJECT_UNITTEST)
 	rm $(MAIN_OBJECTS)
