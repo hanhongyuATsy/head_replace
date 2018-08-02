@@ -1,0 +1,2 @@
+REQUESTBASE_OBJS=$(SRC_DIR)/Request/baserequest.o \
+                 $(SRC_DIR)/Request/header.o

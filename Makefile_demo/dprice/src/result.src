@@ -1,0 +1,56 @@
+RESULT_OBJS=$(SRC_DIR)/Result/PricingResult/dfsqresult.o \
+            $(SRC_DIR)/Result/PricingResult/farecomponent.o \
+            $(SRC_DIR)/Result/PricingResult/fareresult.o \
+            $(SRC_DIR)/Result/PricingResult/patczintresult.o \
+            $(SRC_DIR)/Result/PricingResult/patresult.o \
+            $(SRC_DIR)/Result/PricingResult/pubfareresult.o \
+            $(SRC_DIR)/Result/PricingResult/netfareresult.o \
+            $(SRC_DIR)/Result/PricingResult/farebyrulefareresult.o \
+            $(SRC_DIR)/Result/PricingResult/pricingresult.o \
+            $(SRC_DIR)/Result/PricingResult/zvalue.o \
+            $(SRC_DIR)/Result/PricingResult/sfcresult.o \
+            $(SRC_DIR)/Result/PricingResult/tax.o
+
+ifeq ($(MODE), BESTBUY)
+RESULT_OBJS+=$(SRC_DIR)/Result/BestBuyResult/BaseFare.o \
+             $(SRC_DIR)/Result/BestBuyResult/BestBuyResult.o \
+             $(SRC_DIR)/Result/BestBuyResult/BestBuyResults.o \
+             $(SRC_DIR)/Result/BestBuyResult/FareBinding.o \
+             $(SRC_DIR)/Result/BestBuyResult/FareComponent.o \
+             $(SRC_DIR)/Result/BestBuyResult/FareComponents.o \
+             $(SRC_DIR)/Result/BestBuyResult/FbrDtl.o \
+             $(SRC_DIR)/Result/BestBuyResult/FbrDtls.o \
+             $(SRC_DIR)/Result/BestBuyResult/NetFare.o \
+             $(SRC_DIR)/Result/BestBuyResult/NetFares.o \
+             $(SRC_DIR)/Result/BestBuyResult/PricingSolution.o \
+             $(SRC_DIR)/Result/BestBuyResult/PricingSolutions.o \
+             $(SRC_DIR)/Result/BestBuyResult/PubFare.o \
+             $(SRC_DIR)/Result/BestBuyResult/PubFares.o \
+             $(SRC_DIR)/Result/BestBuyResult/RoutInfo.o \
+             $(SRC_DIR)/Result/BestBuyResult/RoutInfos.o \
+             $(SRC_DIR)/Result/BestBuyResult/Rule.o \
+             $(SRC_DIR)/Result/BestBuyResult/Rules.o \
+             $(SRC_DIR)/Result/BestBuyResult/CombineRuleDtl.o \
+             $(SRC_DIR)/Result/BestBuyResult/CombineRule.o \
+             $(SRC_DIR)/Result/BestBuyResult/SectorInfo.o \
+             $(SRC_DIR)/Result/BestBuyResult/Tax.o \
+             $(SRC_DIR)/Result/BestBuyResult/Taxes.o \
+             $(SRC_DIR)/Result/BestBuyResult/RequestInfo.o \
+             $(SRC_DIR)/Result/BestBuyResult/RefundDetail.o \
+             $(SRC_DIR)/Result/BestBuyResult/RefundRule.o \
+             $(SRC_DIR)/Result/BestBuyResult/RefundRules.o \
+             $(SRC_DIR)/Result/BestBuyResult/ReissueRule.o \
+             $(SRC_DIR)/Result/BestBuyResult/ReissueRuleDetail.o \
+             $(SRC_DIR)/Result/BestBuyResult/ReissueRuleRestriction.o \
+             $(SRC_DIR)/Result/BestBuyResult/ReissueRules.o \
+             $(SRC_DIR)/Result/BestBuyResult/RefundRuleDisplay.o \
+             $(SRC_DIR)/Result/BestBuyResult/RefundDetailDisplay.o \
+             $(SRC_DIR)/Result/BestBuyResult/ReissueRuleDisplay.o \
+             $(SRC_DIR)/Result/BestBuyResult/ReissueDetailDisplay.o \
+             $(SRC_DIR)/Result/BestBuyResult/YFares.o \
+             $(SRC_DIR)/Result/BestBuyResult/CabinFares.o \
+             $(SRC_DIR)/Result/BestBuyResult/CabinFare.o \
+             $(SRC_DIR)/Result/BestBuyResult/RMK.o \
+             $(SRC_DIR)/Result/BestBuyResult/BestBuyResultsFormatter.o \
+             $(SRC_DIR)/Result/BestBuyResult/BestBuyResultParser.o
+endif

@@ -1,0 +1,27 @@
+REQUEST_OBJS=$(SRC_DIR)/Request/PricingRequest/dfsqrequest.o \
+             $(SRC_DIR)/Request/PricingRequest/patrequest.o \
+             $(SRC_DIR)/Request/PricingRequest/pricingrequest.o \
+             $(SRC_DIR)/Request/PricingRequest/sector.o \
+             $(SRC_DIR)/Request/PricingRequest/sfcrequest.o
+
+ifeq ($(MODE), BESTBUY)
+REQUEST_OBJS+=$(SRC_DIR)/Request/PricingRequest/PricingRequestParser.o \
+              $(SRC_DIR)/Request/BestBuyRequest/RoutFlights.o \
+              $(SRC_DIR)/Request/BestBuyRequest/RoutFlight.o \
+              $(SRC_DIR)/Request/BestBuyRequest/HeaderIn.o \
+              $(SRC_DIR)/Request/BestBuyRequest/ClassGroups.o \
+              $(SRC_DIR)/Request/BestBuyRequest/ClassGroup.o \
+              $(SRC_DIR)/Request/BestBuyRequest/CodeShare.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuySector.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuyRequest.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuyRequests.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuyItinerary.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuyRouteInfo.o \
+              $(SRC_DIR)/Request/BestBuyRequest/Agency.o \
+              $(SRC_DIR)/Request/BestBuyRequest/ZInfo.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BrandFareRestriction.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BrandFareRestrictions.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuyRequestsParser.o \
+              $(SRC_DIR)/Request/BestBuyRequest/BestBuyRequestsFormatter.o \
+              $(SRC_DIR)/Request/BestBuyRequest/ReduceOption.o
+endif

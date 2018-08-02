@@ -1,0 +1,78 @@
+## Pricing PricingEngine/Argument
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/bestbuyarg.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/bestbuyheaderinarg.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/bestbuyroutflightarg.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/bestbuysectorarg.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/bestbuyitineraryarg.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/bestbuyrouteinfoarg.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/BestBuyArgument/pricingargpool.o
+
+## Pricing PricingEngine/BusinessData
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/reissuerule.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/reissueruledetail.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/reissuerulerestriction.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/refunddetail.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/refundrule.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/refundruledisplay.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/refunddetaildisplay.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/reissueruledisplay.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/reissuedetaildisplay.o \
+
+## Pricing PricingEngine/BusinessLogic
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatw.o
+
+## Pricing PricingEngine/BusinessProcess
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatw.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/BestBuyProcess/bestbuyargformatter.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/BestBuyProcess/bestbuymakeindex.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/BestBuyProcess/indexmaker.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/BestBuyProcess/bestbuyfilter.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/bestbuyresultformatter.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/matrixloop.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/multisegmentresultformatter.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/refundprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/reissueprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/thirdpartyprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FixedCommissionProcess/fixedcommissionprocess.o
+
+## Pricing PricingEngine/Controller
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/Controller/bestbuycontroller.o
+
+## Pricing PricingEngine/DAO/CacheDao
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daorulecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoCat31Cache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoCat33Cache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoRefundDetailCache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoRefundRuleCache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoRuleReissueCache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoRuleReissueDetailCache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/DaoRuleReissueRestrictionCache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daothirdpartydiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daorepricegeneralrulecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofixedcommissioncache.o
+
+## Pricing PricingEngine/DAO/DB
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoruledb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/DaoCat31DB.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/DaoCat33DB.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/DaoRefundDetailDB.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/DaoRefundRuleDB.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorulereissuedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorulereissuedetaildb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorulereissuerestrictiondb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daothirdpartydiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorepricegeneralruledb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofixedcommissiondb.o
+
+## Pricing PricingEngine/FareFetcher
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/FareFetcher/yfarefetcher.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/travelcompletedatetophalfvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/travelcompletedatebottomhalfvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/traveldatevalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/brandfaretypevalidation.o
+
+## Pricing PricingEngine/PricingSolution
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/PricingSolution/bestbuypatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/bestbuysolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/yfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/cabinfare.o

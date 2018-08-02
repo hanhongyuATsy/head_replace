@@ -1,0 +1,26 @@
+## Pricing PricingEngine/BusinessData
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessData/rulerestriction.o
+
+## Pricing PricingEngine/BusinessProcess
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ZValueProcess/zvalueprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/abitemprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/fixedcommisionprocess.o
+
+## Pricing PricingEngine/DAO/CacheDao
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoconfigabitemcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofixedcommisioncache.o
+
+## Pricing PricingEngine/DAO/DB
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoconfigabitemdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofixedcommisiondb.o
+
+## Pricing PricingEngine/XmlTrace
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/XmlTrace/patsvrenv.o \
+          $(SRC_DIR)/Engine/PricingEngine/XmlTrace/xmltracelog.o
+
+## Pricing PricingEngine/FareFetcher
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/duplicatevalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/travelcompletedatevalidation.o
+
+## Pricing PricingEngine/AVFetcher
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/AVFetcher/tscadapter.o

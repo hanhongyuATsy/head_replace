@@ -1,0 +1,6 @@
+## Front HostInterface
+FRONT_OBJS+=$(SRC_DIR)/Front/HostInterface/sfnhostparser.o
+
+FRONT_OBJS+=$(SRC_DIR)/Front/JsonInterface/jsonparser.o \
+            $(SRC_DIR)/Front/JsonInterface/jsonformatter.o
+

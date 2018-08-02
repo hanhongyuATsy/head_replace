@@ -1,0 +1,3 @@
+AVGROUPS_OBJS+=$(SRC_DIR)/Request/AvGroups/av.o \
+               $(SRC_DIR)/Request/AvGroups/avgroup.o \
+               $(SRC_DIR)/Request/AvGroups/avgroups.o

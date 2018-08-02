@@ -1,0 +1,2 @@
+ERR_OBJS=$(SRC_DIR)/Engine/ErrorEngine/errorplugin.o \
+         $(SRC_DIR)/Engine/ErrorEngine/errorcontroller.o

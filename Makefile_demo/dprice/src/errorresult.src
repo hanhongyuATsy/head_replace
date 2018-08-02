@@ -1,0 +1,2 @@
+## Error ErrorResult
+ERRORRESULT_OBJS+=$(SRC_DIR)/Result/ErrorResult/errorresult.o

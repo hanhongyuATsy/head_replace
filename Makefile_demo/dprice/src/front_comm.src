@@ -1,0 +1,83 @@
+## Front HostInterface
+FRONT_OBJS=$(SRC_DIR)/Front/HostInterface/dfsqparser.o \
+           $(SRC_DIR)/Front/HostInterface/headerparser.o \
+           $(SRC_DIR)/Front/HostInterface/patparser.o \
+           $(SRC_DIR)/Front/HostInterface/sectorparser.o \
+           $(SRC_DIR)/Front/HostInterface/dfsqformatter.o \
+           $(SRC_DIR)/Front/HostInterface/hostparserpublic.o \
+           $(SRC_DIR)/Front/HostInterface/hostparser.o \
+           $(SRC_DIR)/Front/HostInterface/hostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/basehostparser.o \
+           $(SRC_DIR)/Front/HostInterface/basehostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfdhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfdhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfnhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfnhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfngrhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfngrhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfrhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfrhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfchostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfehostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfehostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nflhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nflhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfllhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfllhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nflallhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nflallhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/nfqhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/nfqhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/pfdhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/pfdhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/pfnhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/pfnhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/pfrhostparser.o \
+           $(SRC_DIR)/Front/HostInterface/pfrhostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/hoststring.o \
+           $(SRC_DIR)/Front/HostInterface/pagehostformatter.o \
+           $(SRC_DIR)/Front/HostInterface/pagehostparser.o \
+           $(SRC_DIR)/Front/HostInterface/patafc.o \
+           $(SRC_DIR)/Front/HostInterface/patafn.o \
+           $(SRC_DIR)/Front/HostInterface/pataformatter.o \
+           $(SRC_DIR)/Front/HostInterface/patahost.o \
+           $(SRC_DIR)/Front/HostInterface/patczintformatter.o \
+           $(SRC_DIR)/Front/HostInterface/patmformatter.o \
+           $(SRC_DIR)/Front/HostInterface/asvcparser.o \
+           $(SRC_DIR)/Front/HostInterface/ocparser.o \
+           $(SRC_DIR)/Front/HostInterface/sfcformatter.o
+
+#FRONT_OBJS+=$(SRC_DIR)/Common/engineinteradapter.o
+
+## Front SerInterface
+FRONT_OBJS+=$(SRC_DIR)/Front/SerInterface/serparser.o \
+            $(SRC_DIR)/Front/SerInterface/serformatter.o
+
+## Front XMLInterface
+FRONT_OBJS+=$(SRC_DIR)/Front/XMLInterface/pnrservxmlutil.o \
+            $(SRC_DIR)/Front/XMLInterface/domprintfilter.o \
+            $(SRC_DIR)/Front/XMLInterface/basexmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/patxmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/ocxmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/xmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/basexmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/patxmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/errorxmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/xmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/ocxmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/nfdxmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/pfdxmlformatter.o \
+            $(SRC_DIR)/Front/XMLInterface/nfdxmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/pfdxmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/nfdshoppingxmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/rulerequestxmlparser.o \
+            $(SRC_DIR)/Front/XMLInterface/pfngrxmlformatter.o
+
+## Front Controller
+FRONT_OBJS+=$(SRC_DIR)/Front/Controller/controllerparser.o \
+            $(SRC_DIR)/Front/Controller/farefercvplugin.o \
+            $(SRC_DIR)/Front/Controller/controllerformatter.o \
+            $(SRC_DIR)/Front/Controller/farefesndplugin.o \
+            $(SRC_DIR)/Front/Controller/frontparameter.o \
+            $(SRC_DIR)/Front/Controller/APCTCode.o \
+            $(SRC_DIR)/Front/Controller/SwitchParse.o

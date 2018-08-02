@@ -1,0 +1,334 @@
+## Pricing Common
+PAT_OBJS=$(SRC_DIR)/Common/engineinteradapter.o \
+
+## Pricing PricingEngine/Argument
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/Argument/baseargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/dfsqargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/headerargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/patargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/pricingargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/sectorargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/Argument/sfcargument.o
+
+## Pricing PricingEngine/BusinessData
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessData/commissionmaskinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/agentinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/discount3uinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/discounthuinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/discountinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/discountmuinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/discountpataxxinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/fareformula.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/flightnorange.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/strmap.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/fare.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/netfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/pubfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/route.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/farebyrulefare.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/farebyruledetail.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/farebyrulebasefare.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Fare/farebyrule.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/cat04.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/cat18.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/pubrule.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/Rule/rule.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/drbdfarebasisind.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/bsr.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/configbaggage.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/drbdpercentrange.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/rapidcodeinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/subclasscodeinfo.o\
+          $(SRC_DIR)/Engine/PricingEngine/BusinessData/thirdpartydiscountinfo.o
+
+## Pricing PricingEngine/BusinessLogic
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatadivide.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatcustom.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatm2.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockczint.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockdfsq.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockerror.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpata3u.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpata.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpataca.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatach.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatacz.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatahu.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatamu.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpataxx.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatczyzzt.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatm.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatmch.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpricing.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablockpatacommon.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessLogic/datablocksfc.o
+
+## Pricing PricingEngine/BusinessProcess
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocess3u.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocess3udefault.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessmanual2.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessca.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocesscombine.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocesscz.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessczyzzt.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessczint.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessdefault.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessrtdefault.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessdfsq.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessdivide.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocesshu.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessmanual.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessmanualch.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessmatch.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessmu.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocessxx.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/FareProcess/fareprocesssfc.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/TaxProcess/agentchargetaxprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/TaxProcess/cntaxprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/TaxProcess/yqtaxprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/TaxProcess/octaxprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargument.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatcustom.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatcustommatch.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatcustomdivide.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatcustomdefault.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatcustomcombine.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentdfsq.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentofficeaccountcode.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumenterror.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpata3u.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpata.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpataad.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpataca.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatach.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatacz.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatczyzzt.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatahu.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatamu.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpataxx.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatadivide.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatczint.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatm.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentpatmch.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ValidateArgument/validateargumentsfc.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/Pool/poolmanager.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/Pool/poolkey.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/integraterequest.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/argumentformatter.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/businesskit.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/validatesolutionisempty.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/resultformatter.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/vipcodeprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ZValueProcess/zvalueprocessmatch.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ZValueProcess/zvalueprocesscombine.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ZValueProcess/zvalueprocessdivide.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ZValueProcess/zvalueintegrateprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ZValueProcess/zvaluemaskprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/ocsvrcaller.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/baggageprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/currexchprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/farebyrulefareamountprocess.o \
+          $(SRC_DIR)/Engine/PricingEngine/BusinessProcess/patsolutioncustomizeprocess.o
+
+## Pricing PricingEngine/Controller
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/Controller/controller.o \
+          $(SRC_DIR)/Engine/PricingEngine/Controller/patplugin.o \
+          $(SRC_DIR)/Engine/PricingEngine/Controller/pricingengineinit.o \
+          $(SRC_DIR)/Engine/PricingEngine/Controller/patengineparameter.o
+
+## Pricing PricingEngine/DAO/daohelper
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/daohelper.o
+
+## Pricing PricingEngine/DAO/CacheDao
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofactorycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/dao3udiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoaddonendorsementcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoactivatedcarriercache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoagentinfocache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daodescriptioncache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoairportcitycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoairportcitymapcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoblackoutcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoblackoutincache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocarriercache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocat04cache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocat04detailcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocat18cache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocitydistancecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocncache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocntaxcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocombinerulecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocommissionmaskcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoconversionratecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocountrycodecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daointernationalcitycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofarecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocurrencycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daocurrencyfromagreementcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daodecimalplacecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoendorsementcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoexflightnumbercache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofarerulecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofarebyruledetailexroutecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoflightentriescache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoflightnumbercache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoseasonalitycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofromtodatecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoseasonalityincache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofromtodateincache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoroutecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daohourcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daorule2cache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daorule6cache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daouserslevelcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daosistercitycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofueltaxcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofueltaxlimitcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daogblauthorizationcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daogroupsentrycache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofarebyrulebasefarecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofarebyruledetailcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daofarebyruledistributioncache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daohudiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daomumultinonesdiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daomurtdiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daomusinglesdiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoparametercache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daopatacarriercache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daopataxxdiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daopnfarecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daostopoverdiscountcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daopsfarecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daorapidcodecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoshieldsectorcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daosubclasscodecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoparametertczcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daodrbdfarebasisindcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daodrbdpercentrangecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daobsrcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoconfigbaggagecache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoswitchconfigcache.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/CacheDao/daoaccountcodectrlcache.o
+
+## Pricing PricingEngine/DAO/DB
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/DAO/DB/columnsinfo.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocarrierdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoagentinfodb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoairportcitydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/dao3udiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoactivatedcarrierdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoaddonendorsementdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoairportcitymapdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoblackoutdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoblackoutindb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocat04db.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocat04detaildb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocat18db.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocitydistancedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocndb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocntaxdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocombineruledb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocommissionmaskdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoconversionratedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocountrycodedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocurrencydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daocurrencyfromagreementdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daodb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daodecimalplacedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daodescriptiondb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoendorsementdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoexflightnumberdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofactorydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofaredb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofareruledb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofarebyruledetailexroutedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoflightentriesdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoflightnumberdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofromtodatedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofromtodateindb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofueltaxdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofueltaxlimitdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daogblauthorizationdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daogroupsentrydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daohourdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofarebyruledetaildb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofarebyruledistributiondb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daofarebyrulebasefaredb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daohudiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daointernationalcitydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daomumultinonesdiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daomurtdiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daomusinglesdiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoparameterdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daopatacarrierdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daopnfaredb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daopsfaredb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorapidcodedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoroutedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorule2db.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daorule6db.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daopataxxdiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoseasonalitydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoseasonalityindb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daosistercitydb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daostopoverdiscountdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daousersleveldb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/dbconnec.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/dbconnectionhelper.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/stmtparameter.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoshieldsectordb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/table2columns.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daosubclasscodedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoparametertczdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daodrbdfarebasisinddb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daodrbdpercentrangedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daobsrdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoconfigbaggagedb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoswitchconfigdb.o \
+          $(SRC_DIR)/Engine/PricingEngine/DAO/DB/daoaccountcodectrldb.o 
+
+## Pricing PricingEngine/FareFetcher
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/FareFetcher/farefetcher.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/advancepurchasevalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/boardingtimevalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/currencyvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/dayofweekvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/faretypevalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/flightnumbervalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/groupidvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/groupnumbervalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/minmaxvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/netfarefetcher.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/routestopovervalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/seasonalityvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/farebasisvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/codesharevalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/NetFareFetcher/charterflightvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/PubFareFetcher/cat04validation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/PubFareFetcher/pubfarebasisvalidation.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/PubFareFetcher/pubfarefetcher.o \
+          $(SRC_DIR)/Engine/PricingEngine/FareFetcher/FareByRuleFetcher/farebyrulefetcher.o
+
+## Pricing PricingEngine/PricingSolution
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/PricingSolution/basepatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/combinepatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/defaultpatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/dfsqsolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/dividepatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/farecomponentsolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/faresolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/interlinepatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/matchpatfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/patczintsolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/patfare.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/patsolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/pricingsolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/zvaluesolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/sfcsolution.o \
+          $(SRC_DIR)/Engine/PricingEngine/PricingSolution/faresectorsolution.o
+
+## Pricing PricingEngine/AVFetcher
+PAT_OBJS+=$(SRC_DIR)/Engine/PricingEngine/AVFetcher/avfetcher.o \
+          $(SRC_DIR)/Engine/PricingEngine/AVFetcher/BusinessProcess/avformatter.o \
+          $(SRC_DIR)/Engine/PricingEngine/AVFetcher/BusinessData/avinfo.o

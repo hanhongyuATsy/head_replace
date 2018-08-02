@@ -1,0 +1,6 @@
+OCREQUEST_OBJS+=$(SRC_DIR)/Request/OCRequest/ocsector.o \
+                $(SRC_DIR)/Request/OCRequest/ocrequest.o \
+                $(SRC_DIR)/Request/OCRequest/occommonrequest.o \
+                $(SRC_DIR)/Request/OCRequest/baggagerequest.o \
+                $(SRC_DIR)/Request/OCRequest/asvcrequest.o \
+                $(SRC_DIR)/Request/OCRequest/asvcitemrequest.o

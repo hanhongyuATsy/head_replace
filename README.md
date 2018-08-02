@@ -7,6 +7,9 @@
     *lib         存放gtest 静态库文件
     *include     存放gtest 头文件
     *unittest.sh  单元测试生成覆盖率脚本
+    *Makefile_demo 存储了海哥写的price 项目的Makefile及子目录,留着以后学习模板；
+
+    
 
 ## src 源码说明：
 ### 工程目前有三个类：
@@ -28,3 +31,8 @@
 
 ## 运行测试说明：
     ./main_test
+
+
+
+
+

@@ -1,0 +1,4 @@
+OCRESULT_OBJS=$(SRC_DIR)/Result/OCResult/ocresult.o \
+              $(SRC_DIR)/Result/OCResult/occommonresult.o \
+              $(SRC_DIR)/Result/OCResult/baggageresult.o \
+              $(SRC_DIR)/Result/OCResult/asvcresult.o

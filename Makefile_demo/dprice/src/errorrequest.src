@@ -1,0 +1,6 @@
+ERRORREQUEST_OBJS=$(SRC_DIR)/Request/ErrorRequest/errorrequest.o
+
+ifeq ($(MODE), BESTBUY)
+ERRORREQUEST_OBJS+=$(SRC_DIR)/Request/ErrorRequest/errorrequestformatter.o
+endif
+

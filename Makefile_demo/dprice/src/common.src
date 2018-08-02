@@ -1,0 +1,9 @@
+COMMON_OBJS=$(SRC_DIR)/Common/b64.o \
+            $(SRC_DIR)/Common/cmderror.o \
+            $(SRC_DIR)/Common/date.o \
+            $(SRC_DIR)/Common/freefunc.o \
+            $(SRC_DIR)/Common/logerrorcode.o
+
+ifneq ($(MODE), BESTBUY)
+COMMON_OBJS+=$(SRC_DIR)/Common/jsonmanager.o
+endif
